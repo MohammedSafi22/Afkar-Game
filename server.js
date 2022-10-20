@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
@@ -10,12 +11,18 @@ const categoryRoute = require('./routes/categoryRoute');
 const gameRoute = require('./routes/gameRoute');
 const userRoute = require('./routes/userRoute');
 const authRoute = require('./routes/authRoute');
-const avarageRoute = require('./routes/averageRoute'); 
+const avarageRoute = require('./routes/averageRoute');
+ 
 
 dbConnection();
 
 const app = express();
+app.use(cors(corOptions));
 app.use(express.json())
+
+var corOptions = {
+  origin:"http://54.86.31.114",
+}
 
 if(process.env.NODE_ENV === "development"){
     app.use(morgan('dev'));
