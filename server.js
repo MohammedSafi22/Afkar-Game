@@ -21,9 +21,8 @@ app.use(cors(corOptions));
 app.use(express.json())
 
 var corOptions = {
-  origin:"http://54.86.31.114",
+  origin: '*'
 }
-
 if(process.env.NODE_ENV === "development"){
     app.use(morgan('dev'));
     console.log(`mode:${process.env.NODE_ENV}`);
